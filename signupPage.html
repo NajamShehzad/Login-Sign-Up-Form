@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SignUp Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
+
 <body>
-    <form action="JavaScript:void(0)" onsubmit="signup()" >
-        <input type="text" id="userName" >
-        <input type="password" id="pass">
-        <input type="submit">
-    </form>
+    <fieldset>
+        <legend>SignUp</legend>
+        <h1>Please Fill The Form</h1>
+        <form action="JavaScript:void(0)" onsubmit="signup()">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" required="required" >
+            <br>
+            <label>UserName:</label>
+            <input type="text" id="userName"  required="required">
+            <br>
+            <label>Email:</label>
+            <input type="email" id="email"  required="required">
+            <br>
+            <label>Password:</label>
+            <input type="password" id="pass"  required="required">
+            <br>
+            <input value="SignUp" type="submit">
+        </form>
+    </fieldset>
     <script>
         var condition = JSON.parse(localStorage.getItem("condition"));
         var userName = JSON.parse(localStorage.getItem("userName"));
+        var password = JSON.parse(localStorage.getItem("password"));
+        var email = JSON.parse(localStorage.getItem("email"));
+        var fullName = JSON.parse(localStorage.getItem("fullName"));
+        var check2;
         var check;
-        function signup(){
-            if(condition){
-               // userName = [];
+        function signup() {
+            if (condition) {
+                // userName = [];
                 userName.push(document.getElementById("userName").value);
-                localStorage.setItem("userName",JSON.stringify(userName));
+                password.push(document.getElementById("pass").value);
+                email.push(document.getElementById("email").value);                                
+                fullName.push(document.getElementById("fullName").value);
+                localStorage.setItem("userName", JSON.stringify(userName));
+                localStorage.setItem("password", JSON.stringify(password));
+                localStorage.setItem("fullName", JSON.stringify(fullName));
+                localStorage.setItem("email", JSON.stringify(email));                                                
                 check = userName;
+                check2 = fullName;    
 
             }
-            else{
+            else {
+                fullName = [];
+                password = [];
+                email = [];
                 userName = [];
                 userName.push(document.getElementById("userName").value);
-                localStorage.setItem("userName",JSON.stringify(userName));
+                email.push(document.getElementById("email").value);
+                fullName.push(document.getElementById("fullName").value);
+                password.push(document.getElementById("pass").value);                                               
+                localStorage.setItem("userName", JSON.stringify(userName));
+                localStorage.setItem("password", JSON.stringify(password));
+                localStorage.setItem("fullName", JSON.stringify(fullName));
+                localStorage.setItem("email", JSON.stringify(email));
+                check2 = fullName;                                   
                 check = userName;
-                localStorage.setItem("condition",JSON.stringify(true))
-                condition =  JSON.parse(localStorage.getItem("condition"));
+                localStorage.setItem("condition", JSON.stringify(true))
+                condition = JSON.parse(localStorage.getItem("condition"));
             }
 
 
@@ -39,4 +78,5 @@
 
     </script>
 </body>
+
 </html>
