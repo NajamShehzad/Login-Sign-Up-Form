@@ -11,7 +11,12 @@ body{
 #email{
     margin-left: 9.4%
 }
-
+#button2{
+    margin-left: 20px;
+}
+#button1{
+    margin-left: 25%;
+}
     
 fieldset{
     margin-left: 35%;
