@@ -25,6 +25,10 @@ var names1 = [2, 5, 6, 4, 8, 8, "najam butt", 98];
 localStorage.setItem("names", JSON.stringify(names));
 localStorage.setItem("names", JSON.stringify(names1));
 var storedNames1 = JSON.parse(localStorage.getItem("names12"));
+var userNames = ["najamshehzad","mutlib butt","A.Rehman Butt"];
+localStorage.setItem("userName",JSON.stringify(userNames));
+var getA = JSON.parse(localStorage.getItem("userName"));
+
 // if (typeof (storedNames1) == "object") {
 //     alert("yes");
 // }
