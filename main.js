@@ -15,6 +15,7 @@ function signIn() {
                 alert("Got It Bro");
                 localStorage.setItem("userNumber", JSON.stringify(i));
                 condition1 = false;
+                localStorage.setItem("logincon",JSON.stringify(true));
                 window.location.href = "mainPage.html"
                 break;
             }
@@ -42,9 +43,10 @@ function signup() {
     var toDoCondition = JSON.parse(localStorage.getItem("toDoCondition"));
     if (condition) {
         var name1 = document.getElementById("userName").value;
+        var cemail = document.getElementById("email").value;        
         var condition1 = true;
         for (var i = 0; i < userName.length; i++) {
-            if (name1 == userName[i]) {
+            if (name1 == userName[i]||cemail == email[i] ) {
                 condition1 = false;
                 break;
             }
@@ -74,7 +76,7 @@ function signup() {
             alert("Thank You For Signing Up");
         }
         else {
-            alert("User Name Is Already Taken");
+            alert("UserName Or Email Is Already Taken");
         }
     }
     else {

@@ -54,7 +54,7 @@
         }
 
         body {
-            background-color: #69B2EB ;
+            background-color: #69B2EB;
             font-size: 150%;
         }
 
@@ -70,6 +70,22 @@
             margin-top: 10px;
 
             font-size: 110%;
+        }
+
+        #logout {
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f4), color-stop(1, #dededd));
+            border: 1px solid #cdcdc6;
+            background-color: #dbdbdb;
+            border-radius: 6px;
+            display: inline-block;
+            color: #636360 !important;
+            font-size: 15px;
+            font-weight: normal;
+            padding: 6px 24px;
+            text-decoration: none;
+            margin-left: 30%;
+
         }
 
         #sub1 {
@@ -116,8 +132,9 @@
         label {
             margin-left: 18%;
         }
-        #page{
-            background: #218BDF 
+
+        #page {
+            background: #218BDF
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
@@ -140,6 +157,7 @@
             <textarea id="input2"></textarea>
             <br>
             <input type="submit" id="sub1" class="sub">
+            <input type="button" value="Logout" id="logout" class="sub" onclick="logoutp()">
 
         </form>
         <div id="output">
@@ -154,10 +172,20 @@
 
         var fullName = JSON.parse(localStorage.getItem("fullName"));
         var number = JSON.parse(localStorage.getItem("userNumber"));
+        var loginp = JSON.parse(localStorage.getItem("logincon"));
+        if (loginp == false || number == null) {
+            window.location.href = "index.html";
+        }
         var userlist = JSON.parse(localStorage.getItem("userToDo"));
         var userTitle = JSON.parse(localStorage.getItem("userTitle"));
         var toDoCondition = JSON.parse(localStorage.getItem("toDoCondition"));
-        document.getElementById("heading").innerHTML = "WelCome " + fullName[number] + " To Our Website";
+        document.getElementById("heading").innerHTML = "WelCome " + fullName[number] + " To The_Social";
+        function logoutp(){
+            localStorage.setItem("logincon",JSON.stringify(false));
+            window.location.href = "index.html";
+
+
+        }
 
         if (toDoCondition[number]) {
             for (var i = 0; i < userTitle[number].length; i++) {
