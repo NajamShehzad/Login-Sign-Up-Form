@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        .item {
+            box-shadow: 0px 0px 10px;
+            margin-top: 10px;
+            margin-left: -5%;
+            line-height: 25px;
+            background-color: rgb(55, 105, 241);
+        }
+
+        h1 {
+            /* padding-left: 35%; */
+        }
+
+        form {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            box-shadow: 0px 0px 15px;
+        }
+
+        #output {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+
+        }
+
+
+
+
+
+        #input1 {
+            margin-left: 12%;
+        }
+
+        #input2 {
+            margin-left: 3%;
+            margin-top: 10px;
+            width: 26%;
+            resize: none;
+        }
+
+        form {
+            background-color: rgb(38, 252, 102)
+        }
+
+        body {
+            background-color: #69B2EB ;
+            font-size: 150%;
+        }
+
+        #heading {
+            font-size: 70px;
+        }
+
+        #heading2 {
+            font-size: 50px;
+        }
+
+        .sub {
+            margin-top: 10px;
+
+            font-size: 110%;
+        }
+
+        #sub1 {
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f4), color-stop(1, #dededd));
+            border: 1px solid #cdcdc6;
+            background-color: #dbdbdb;
+            border-radius: 6px;
+            display: inline-block;
+            color: #636360 !important;
+            font-size: 15px;
+            font-weight: normal;
+            padding: 6px 24px;
+            text-decoration: none;
+            margin-left: 40%;
+        }
+
+        #btn1 {
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f4), color-stop(1, #dededd));
+            border: 1px solid #cdcdc6;
+            background-color: #dbdbdb;
+            border-radius: 6px;
+            display: inline-block;
+            color: #636360 !important;
+            font-size: 15px;
+            font-weight: normal;
+            padding: 6px 24px;
+            text-decoration: none;
+            float: right;
+            margin-top: -12px;
+
+
+        }
+
+        * {
+            font-size: 100%;
+        }
+
+        ol {
+            list-style-position: inside;
+        }
+
+        label {
+            margin-left: 18%;
+        }
+        #page{
+            background: #218BDF 
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="form">
+        <center>
+            <h1 id="heading"></h1>
+        </center>
+        <form action="JavaScript:void(0)" onsubmit="todo(this)" method="POST" id="page">
+            <center>
+                <h1 id="heading2">ToDo List</h1>
+            </center>
+            <label>Title:</label>
+            <input type="text" name="najam" id="input1">
+            <br>
+            <label>Discription :</label>
+            <textarea id="input2"></textarea>
+            <br>
+            <input type="submit" id="sub1" class="sub">
+
+        </form>
+        <div id="output">
+            <ol id="list">
+
+            </ol>
+
+        </div>
+    </div>
+    <script>
+
+
+        var fullName = JSON.parse(localStorage.getItem("fullName"));
+        var number = JSON.parse(localStorage.getItem("userNumber"));
+        var userlist = JSON.parse(localStorage.getItem("userToDo"));
+        var userTitle = JSON.parse(localStorage.getItem("userTitle"));
+        var toDoCondition = JSON.parse(localStorage.getItem("toDoCondition"));
+        document.getElementById("heading").innerHTML = "WelCome " + fullName[number] + " To Our Website";
+
+        if (toDoCondition[number]) {
+            for (var i = 0; i < userTitle[number].length; i++) {
+                var title = userTitle[number][i];
+                var dis = userlist[number][i];
+                var elements = document.createElement("li");
+                elements.setAttribute("class", "item")
+                var button = document.createElement("input");
+                button.setAttribute("type", "button");
+                button.setAttribute("value", "Remove");
+                button.setAttribute("onclick", "dlt(this.parentNode)")
+                button.setAttribute("id", "btn1");
+                elements.innerHTML = title.toLocaleUpperCase() + "<br>" + dis;
+                elements.appendChild(button);
+                var list = document.getElementById("list");
+                list.appendChild(elements);
+
+            }
+
+        }
+
+        var name1;
+
+
+        // function clearf() {
+
+        //     name1 = document.getElementById("list");
+        //     name1.innerHTML = "";
+        // }
+        // var check1;
+
+        function dlt(val) {
+            valu = "";
+            check1 = val;
+            var tempP = val.parentNode;
+            tempP.removeChild(val);
+            console.log("working");
+            var list = document.getElementsByClassName("item");
+            userTitle[number] = [];
+            userlist[number] = [];
+            for (var i = 0; i < list.length; i++) {
+                userTitle[number].push(list[i].childNodes[0].nodeValue);
+                userlist[number].push(list[i].childNodes[2].nodeValue);
+            }
+            localStorage.setItem("userTitle", JSON.stringify(userTitle));
+            localStorage.setItem("userToDo", JSON.stringify(userlist));
+
+        }
+
+        var number1;
+        var title = [];
+        var dis = [];
+        var value;
+        var no = 0;
+        function todo(form) {
+            if (form.elements[0].value == "" || form.elements[1].value == "") {
+                alert("Please Fill Both Fields")
+            }
+            else {
+                // if (toDoCondition[number]) {
+                //     number1 = form;
+                //     userTitle[number].push(form.elements[0].value);//pushing in local storage variable
+                //     userlist[number].push(form.elements[1].value);//pushing in local storage variable
+                //     title.push(form.elements[0].value);
+                //     dis.push(form.elements[1].value);
+                //     value = document.createElement("li")
+                //     value.setAttribute("class", "item")
+                //     console.log(form);
+                //     var element = document.getElementById("list");
+                //     var button = document.createElement("input");
+                //     button.setAttribute("type", "button");
+                //     button.setAttribute("value", "Remove");
+                //     button.setAttribute("onclick", "dlt(this.parentNode)")
+                //     button.setAttribute("id", "btn1");
+                //     for (var i = 0; i < title.length; i++) {
+                //         value.innerHTML = title[i].toLocaleUpperCase() + "<br> &nbsp &nbsp" + dis[i] + "&nbsp";
+                //         value.appendChild(button);
+
+
+                //     }
+                //     name1 = document.getElementById("list");
+                //     element.appendChild(value);
+
+                // }
+                number1 = form;
+                title.push(form.elements[0].value);
+                dis.push(form.elements[1].value);
+                value = document.createElement("li")
+                value.setAttribute("class", "item")
+                console.log(form);
+                var element = document.getElementById("list");
+                var button = document.createElement("input");
+                button.setAttribute("type", "button");
+                button.setAttribute("value", "Remove");
+                button.setAttribute("onclick", "dlt(this.parentNode)")
+                button.setAttribute("id", "btn1");
+                for (var i = 0; i < title.length; i++) {
+                    value.innerHTML = title[i].toLocaleUpperCase() + "<br>" + dis[i];
+                    value.appendChild(button);
+
+
+                }
+                name1 = document.getElementById("list");
+                element.appendChild(value);
+
+
+                userTitle[number].push(form.elements[0].value);//pushing in local storage variable
+                userlist[number].push(form.elements[1].value);//pushing in local storage variable
+                localStorage.setItem("userTitle", JSON.stringify(userTitle));
+                localStorage.setItem("userToDo", JSON.stringify(userlist));
+                toDoCondition[number] = true;
+                localStorage.setItem("toDoCondition", JSON.stringify(toDoCondition));
+
+                no++;
+            }
+
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
