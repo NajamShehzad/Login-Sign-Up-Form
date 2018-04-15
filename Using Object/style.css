@@ -1,0 +1,79 @@
+body{
+    background-color:#69B2EB  
+}
+*{
+    margin-top: 20px;
+}
+fieldset{
+    background: #218BDF  
+}
+#pass{
+    margin-top: 20px;
+    margin-left: 1.86%;
+}
+#email{
+    margin-left: 10.4%
+}
+#button2{
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f4), color-stop(1, #dededd));
+    border: 1px solid #cdcdc6;
+    background-color: #dbdbdb;
+    border-radius: 6px;
+    display: inline-block;
+    color: #636360 !important;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 6px 24px;
+    text-decoration: none;           
+    margin-left: 20px;
+}
+#button1{
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f4), color-stop(1, #dededd));
+    border: 1px solid #cdcdc6;
+    background-color: #dbdbdb;
+    border-radius: 6px;
+    display: inline-block;
+    color: #636360 !important;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 6px 24px;
+    text-decoration: none;          
+    margin-left: 25%;
+}
+legend{
+    font-size: 185%
+}
+*{
+    font-size: 18.3px;
+}
+
+/* #heading{
+    margin: auto;
+    margin-left: -5%;
+
+
+
+} */
+body{
+    font-family: 'Dancing Script', cursive;
+}
+#subBtn{
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+    
+fieldset{
+    margin-left: 35%;
+    box-shadow: 10px 3px 15px royalblue;
+    margin-right: 40%;
+    margin-top: 10%;
+}
